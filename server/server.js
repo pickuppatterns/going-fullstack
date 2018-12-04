@@ -1,3 +1,13 @@
+//const fs = require('fs');
 console.log('i am the server file');
  
-document.getElementById
+const express = require('express');
+const app = express();
+
+
+
+const PORT = 3000;
+app.listen(PORT, () => 
+{
+  console.log('server app listens', PORT);
+});
