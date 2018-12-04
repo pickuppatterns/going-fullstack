@@ -1,14 +1,23 @@
 <template>
   <div id="app">
-    <h1>Hello</h1>
+    <header>
+      <nav>
+        <RouterLink to="/">Home</RouterLink>
+        <RouterLink to="/characters">Characters</RouterLink>
+      </nav>
+    </header>
+
+    <main>
+      <RouterView></RouterView>
+    </main>  
   </div>
 </template>
 
 <script>
-
 export default {
     name: 'app',
     components: {
+
     }
 };
 </script>
