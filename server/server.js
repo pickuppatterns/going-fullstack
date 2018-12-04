@@ -1,10 +1,10 @@
-//const fs = require('fs');
-console.log('i am the server file');
- 
 const express = require('express');
 const app = express();
-
 const fs = require('fs');
+
+console.log('i am the server file');
+ 
+
 
 function readData() {
   // we don't normally use sync, but fine for today
@@ -21,5 +21,5 @@ app.get('/api/collection', (req, res) => {
 const PORT = 3000;
 app.listen(PORT, () => 
 {
-  console.log('server app listens', PORT);
+  console.log('running on', PORT);
 });
