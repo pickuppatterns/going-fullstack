@@ -8,13 +8,13 @@ console.log('i am the server file');
 
 function readData() {
   // we don't normally use sync, but fine for today
-  const data = fs.readFileSync('./data/collection.json', 'utf8');
+  const data = fs.readFileSync('./data/albums.json', 'utf8');
   return JSON.parse(data);
 }
 //middleware body parser
 app.use(express.json());
 
-app.get('/api/collection', (req, res) => {
+app.get('/api/albums', (req, res) => {
   const albums = readData();
   res.json(albums);
 });
