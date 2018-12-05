@@ -5,7 +5,8 @@
         <ul v-if="characters">
             <li v-for="character in characters" 
             :key="character.id">
-            {{character.name}}
+            <p>{{character.name}}</p>
+            <span>{{character.age}} years old</span>
             </li>
         </ul>
     </section>
@@ -30,9 +31,7 @@ export default {
     },
     methods: {
         handleAdd(character) {
-            console.log('would add', character);
             return api.addCharacter(character).then(saved => {
-                console.log(saved);
                 this.characters.push(saved);
             });
         }
@@ -40,6 +39,17 @@ export default {
 };
 </script>
 
-<style>
-
+<style scoped>
+li {
+    list-style: none;
+    padding: 5px;
+}
+ul {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+p {
+    font-weight: bold;
+}
 </style>

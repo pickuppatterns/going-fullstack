@@ -35,4 +35,9 @@ nav {
   display: flex;
   justify-content: space-around;
 }
+header {
+  background-color: rgba(13, 221, 228, 0.411);
+  padding: 20px;
+}
+
 </style>
