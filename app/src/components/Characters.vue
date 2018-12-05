@@ -1,9 +1,10 @@
 <template>
     <section>
         <h1>Characters</h1>
-        <ul>
+        <AddCharacter :onAdd="handleAdd" />
+        <ul v-if="characters">
             <li v-for="character in characters" 
-            :key="character.name">
+            :key="character.id">
             {{character.name}}
             </li>
         </ul>
@@ -11,6 +12,7 @@
 </template>
 
 <script>
+import AddCharacter from './AddCharacter';
 import api from '../services/api.js';
 export default {
     data() {
@@ -18,11 +20,22 @@ export default {
             characters: null
         };
     },
+    components: {
+        AddCharacter
+    },
     created() {
         api.getCharacters().then(characters => {
-            console.log(characters);
             this.characters = characters;
         });
+    },
+    methods: {
+        handleAdd(character) {
+            console.log('would add', character);
+            return api.addCharacter(character).then(saved => {
+                console.log(saved);
+                this.characters.push(saved);
+            });
+        }
     }
 };
 </script>
