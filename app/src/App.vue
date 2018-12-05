@@ -1,17 +1,20 @@
 <template>
-  <div id="app">
+  <div class="app">
+      <div>
+        <RouterLink to='/'>HOME</RouterLink>
+        <RouterLink to='/albums'>ALBUMS</RouterLink>
+        
+      </div>
+  <main>
+    <RouterView></RouterView>
+  </main>
   </div>
 </template>
 
 <script>
 
 
-export default {
-  name: 'app',
-  components: {
-    
-  }
-};
+export default {};
 </script>
 
 <style>
