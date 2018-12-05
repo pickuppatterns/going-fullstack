@@ -7,7 +7,7 @@ const client = new Client(databaseUrl);
 client.connect()
   .then(() => {
     return client.query(`
-        CREATE TABLE IF NOT EXISTS albums (
+        CREATE TABLE IF NOT EXISTS album (
             id SERIAL PRIMARY KEY, 
             name VARCHAR(256) NOT NULL,
             year INT,

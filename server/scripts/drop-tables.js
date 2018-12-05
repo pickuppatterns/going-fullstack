@@ -7,7 +7,7 @@ const client = new Client(databaseUrl);
 client.connect()
   .then(() => {
     return client.query(`
-    DROP TABLE IF EXISTS albums;
+    DROP TABLE IF EXISTS album;
     `);
   })
   .then(

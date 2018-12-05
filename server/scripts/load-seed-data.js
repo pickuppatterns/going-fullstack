@@ -10,7 +10,7 @@ client.connect()
     return Promise.all(
       albums.map(album => {
         return client.query(`
-            INSERT INTO albums (name, year, description, rating)
+            INSERT INTO album (name, year, description, rating)
             VALUES ($1, $2, $3, $4);
             `,
         [album.name, album.year, album.description, album.rating]);

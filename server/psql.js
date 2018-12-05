@@ -8,7 +8,7 @@ const client = new Client(databaseUrl);
 client.connect();
 
 client.query(`
-SELECT name, year, description, rating FROM albums;
+SELECT name, year, description, rating FROM album;
 `)
   .then(
     results => {
