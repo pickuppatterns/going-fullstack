@@ -22,13 +22,24 @@ app.use(express.json());
 
 app.get('/api/albums', (req, res) => {
   const albums = readData();
-  res.json(albums);
+  if(req.query.name) {
+    
+    const match = req.query.name.toLowerCase();
+    const filtered = albums.filter(s => {
+      return s.name.toLowerCase().startsWith(match);
+    });
+    res.json(filtered);
+  }
+  else {
+
+    res.json(albums);
+  }
 });
-app.post('api/albums', (req, res) =>{
+app.post('/api/albums', (req, res) =>{
 
   const albums = readData();
   const album = req.body;
-  albums.id = shortid.generate();
+  album.id = shortid.generate();
   albums.push(album);
   saveData(albums);
   res.json(album);
