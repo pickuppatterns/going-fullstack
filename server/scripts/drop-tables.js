@@ -7,17 +7,11 @@ const client = new Client(databaseUrl);
 client.connect()
   .then(() => {
     return client.query(`
-        CREATE TABLE IF NOT EXISTS albums (
-            id SERIAL PRIMARY KEY, 
-            name VARCHAR(256) NOT NULL,
-            year INT,
-            description VARCHAR(256),
-            rating INT
-        );
-        `);
+    DROP TABLE IF EXISTS albums;
+    `);
   })
   .then(
-    () => console.log('create tables complete'),
+    () => console.log('drop tables complete'),
     err => console.log(err)
   )
   .then(() => {
