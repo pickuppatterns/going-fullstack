@@ -33,8 +33,8 @@ app.get('/api/characters', (req, res) => {
 app.post('/api/characters', (req, res) => {
   const characters = readData();
   const character = req.body;
-  characters.push(req.body);
   character.id = shortid.generate();
+  characters.push(req.body);
   saveData(characters);
   res.json(character);
 });
