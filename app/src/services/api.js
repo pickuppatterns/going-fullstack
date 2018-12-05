@@ -1,7 +1,7 @@
 export default {
 
   getAlbums() {
-    return fetch('api/albums')
+    return fetch('/api/albums')
       .then(response => response.json());
   },
 
