@@ -1,7 +1,7 @@
 <template>
   <form @submit.prevent="handleSubmit">
     <input v-model="album.name" require>
-    <button>Add</button>
+    <button>ADD IT</button>
   </form>
 </template>
 
