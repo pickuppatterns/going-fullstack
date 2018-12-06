@@ -11,8 +11,10 @@
 <script>
 import api from '../services/api.js';
 export default {
-    props: {
-        character: null
+    data() {
+        return {
+            character: null
+        };
     },
     created() {
         api.getCharacter(this.$route.params.id)
