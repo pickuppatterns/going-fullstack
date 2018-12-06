@@ -9,7 +9,7 @@
 <script>
 export default {
   props: {
-    albums: null
+    albums: Array
   }
 };
 </script>

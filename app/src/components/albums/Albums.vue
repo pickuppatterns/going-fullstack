@@ -36,6 +36,7 @@ export default {
   },
   methods: {
     handleAdd(album) {
+      
       return api.addAlbum(album)
         .then(saved => {
           this.albums.push(saved);
