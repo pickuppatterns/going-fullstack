@@ -5,8 +5,9 @@
         <ul v-if="characters">
             <li v-for="character in characters" 
             :key="character.id">
-            <p>{{character.name}}</p>
-            <span>Id: {{character.id}}</span>
+                <RouterLink :to="`/characters/${character.id}`">
+                    {{character.name}}
+                </RouterLink>
             </li>
         </ul>
     </section>
