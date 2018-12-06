@@ -9,7 +9,7 @@ client.connect()
         CREATE TABLE IF NOT EXISTS characters (
             id SERIAL PRIMARY KEY,
             name VARCHAR(256) NOT NULL,
-            cool BOOLEAN NOT NULL,
+            cool BOOLEAN,
             dob DATE
         )
     `);

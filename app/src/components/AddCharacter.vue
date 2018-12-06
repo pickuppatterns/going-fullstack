@@ -31,14 +31,13 @@ export default {
     },
     data() {
         return {
-            character:initCharacter()
+            character: initCharacter()
         };
     },
     methods: {
         handleSubmit() {
             this.onAdd(this.character).then(() => {
                 this.character = initCharacter;
-                console.log(this.character);
             });
         }
     }

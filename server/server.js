@@ -33,12 +33,15 @@ app.get('/api/characters', (req, res) => {
 });
 
 app.post('/api/characters', (req, res) => {
-  const characters = readData();
-  const character = req.body;
-  // character.id = shortid.generate();
-  characters.push(req.body);
-  saveData(characters);
-  res.json(character);
+  const body = req.body;
+  client.query(`
+    INSERT INTO characters (name, cool, dob)
+    VALUES ($1, $2, $3)
+    RETURNING *;`, 
+  [body.name, body.cool, body.dob])
+    .then(result => {
+      res.json(result.rows[0]);
+    });
 });
 
 // this should go at the bottom //

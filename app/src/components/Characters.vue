@@ -27,7 +27,8 @@ export default {
     created() {
         api.getCharacters().then(characters => {
             this.characters = characters;
-        });
+        }).catch(err => 
+            console.log(err));
     },
     methods: {
         handleAdd(character) {
