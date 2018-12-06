@@ -37,7 +37,8 @@ export default {
     methods: {
         handleSubmit() {
             this.onAdd(this.character).then(() => {
-                this.character.initCharacter();
+                this.character = initCharacter;
+                console.log(this.character);
             });
         }
     }

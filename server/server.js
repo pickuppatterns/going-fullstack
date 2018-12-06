@@ -26,7 +26,7 @@ client.connect();
 app.get('/api/characters', (req, res) => {
   const characters = readData();
   client.query(`
-    SELECT name, dob FROM characters;`)
+    SELECT name, id FROM characters;`)
     .then(result => {
       res.json(result.rows);
     });
