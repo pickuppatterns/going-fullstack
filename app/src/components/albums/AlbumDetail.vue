@@ -10,6 +10,7 @@
         <p>
             {{album.rating}}
         </p>   
+        <button @="handleDelete">DELETE</button>
     </section>
 </template>
 
@@ -27,6 +28,15 @@ export default {
       .then(album => {
         this.album = album;
       });
+  }, 
+  method: {
+    handleDelete() {
+      //   console.log('I am the stitch that will remove:'this.album);
+      api.deleteAlbum(this.album.id)
+        .then(() => {
+          this.$router.push('/albums');
+        });
+    }
   }
 };
 </script>

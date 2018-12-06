@@ -35,6 +35,17 @@ app.get('/api/albums/:id', (req, res) => {
     });
 });
 
+app.delete('/api/albums/:id', (req, res) => {
+  client.query(`
+  DELETE FROM albums WHERE id = $1;
+  `,
+  [req.params.id])
+    .then(result => {
+      res.json({ removed:result.rowCount === 1 });
+    });
+});
+
+
 app.post('/api/albums', (req, res) => {
   const body = req.body;
 

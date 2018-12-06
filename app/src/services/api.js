@@ -18,5 +18,12 @@ export default {
       body: JSON.stringify(album)
     })
       .then(response => response.json());
+  },
+  deleteAlbum(id) {
+    console.log(id);
+    return fetch(`/api/albums/${id}`, {
+      method: 'DELETE'
+    })
+      .then(response => response.json());
   }
 };
