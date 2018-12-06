@@ -19,7 +19,7 @@ import api from '../../services/api';
 export default {
   data() {
     return {
-      student:null
+      album:null
     };
   },
   created() {

@@ -8,7 +8,7 @@ export default new VueRouter({
   routes: [
     { path: '/', component: Home },
     { path: '/albums', component: Albums },
-    { path: '/albums', component: AlbumDetail },
+    { path: '/albums/:id', component: AlbumDetail },
     { path: '*', redirect: '/' }
   ]
 });

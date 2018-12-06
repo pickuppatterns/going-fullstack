@@ -1,7 +1,7 @@
 <template>
     <ul v-if="albums">
       <li v-for="album in albums" :key="album.id">
-        {{album.name}}
+        <RouterLink :to="`/albums/${album.id}`">{{album.name}}</RouterLink>
       </li>
     </ul>
 </template>
