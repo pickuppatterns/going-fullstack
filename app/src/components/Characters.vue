@@ -42,16 +42,11 @@ export default {
 </script>
 
 <style scoped>
-li {
-    padding: 5px;
-}
 ul {
+	display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    grid-column-gap: 10px;
+    grid-row-gap: 60px;
     list-style: none;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-}
-p {
-    font-weight: bold;
-}
+	}
 </style>

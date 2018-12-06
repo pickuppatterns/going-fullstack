@@ -42,13 +42,32 @@ export default {
     methods: {
         handleSubmit() {
             this.onAdd(this.character).then(() => {
-                this.character = initCharacter;
+                this.character = initCharacter();
             });
         }
     }
 };
 </script>
 
-<style>
-
+<style scoped>
+form {
+    border: 1px solid black;
+    width: 50vw;
+    display: flex;
+    margin: auto;
+    padding: 10px;
+    flex-direction: column; 
+    justify-content: space-between;
+}
+label {
+    display: block;
+}
+input {
+    margin: auto;
+    width: 25vw;
+}
+button {
+    margin: auto;
+    width: 25%;
+}
 </style>
