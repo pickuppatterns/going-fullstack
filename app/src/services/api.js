@@ -14,6 +14,7 @@ export default {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify(character)
-        }).then(response => response.json());
+        })
+            .then(response => response.json());
     }
 };

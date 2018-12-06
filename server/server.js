@@ -19,7 +19,7 @@ app.get('/api/characters', (req, res) => {
     });
 });
 
-app.get('/api/characters/:id'), (req, res) => {
+app.get('/api/characters/:id', (req, res) => {
   client.query(`
     SELECT * FROM characters WHERE id = $1;
   `,
@@ -27,7 +27,7 @@ app.get('/api/characters/:id'), (req, res) => {
     .then(result => {
       res.json(result.rows[0]);
     });
-};
+});
 
 app.post('/api/characters', (req, res) => {
   const body = req.body;
