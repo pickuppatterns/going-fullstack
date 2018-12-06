@@ -2,6 +2,7 @@ const express = require('express');
 const app = express();
 const shortid = require('shortid');
 const fs = require('fs');
+const morgan = require('morgan');
 
 function readData() {
   const data = fs.readFileSync('./data/characters.json', 'utf8');
@@ -13,6 +14,7 @@ function saveData(characters) {
   fs.writeFileSync('./data/characters.json', json);
 }
 
+app.use(morgan('dev'));
 app.use(express.json());
 
 app.get('/api/characters', (req, res) => {

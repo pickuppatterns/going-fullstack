@@ -6,7 +6,7 @@
             <li v-for="character in characters" 
             :key="character.id">
             <p>{{character.name}}</p>
-            <span>{{character.age}} years old</span>
+            <span>DOB: {{character.dob}}</span>
             </li>
         </ul>
     </section>
