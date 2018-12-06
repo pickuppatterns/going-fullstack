@@ -32,10 +32,10 @@ app.get('/api/characters/:id', (req, res) => {
 app.post('/api/characters', (req, res) => {
   const body = req.body;
   client.query(`
-    INSERT INTO characters (name, cool, dob)
-    VALUES ($1, $2, $3)
+    INSERT INTO characters (name, fandom, cool, age)
+    VALUES ($1, $2, $3, $4)
     RETURNING *;`, 
-  [body.name, body.cool, body.dob])
+  [body.name, body.fandom, body.cool, body.age])
     .then(result => {
       res.json(result.rows[0]);
     });

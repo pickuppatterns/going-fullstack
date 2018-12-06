@@ -3,14 +3,18 @@
         <label>Name: 
             <input v-model="character.name" required>
         </label>
+        <label>
+            Fandom:
+            <input type="text" v-model="character.fandom" required>
+        </label>
         <label>Cool: 
             <select v-model="character.cool">
                 <option value="true">Yes!</option>
                 <option value="false">No!</option>
             </select>
         </label>
-       <label>DOB:</label>
-            <input type="date" v-model="character.dob" required>
+       <label>Age:</label>
+            <input type="number" v-model="character.age" required>
         <button>Add</button>
     </form>
 </template>
@@ -20,8 +24,9 @@
 function initCharacter() {
     return {
         name: '',
+        fandom: '',
         cool: '',
-        dob: '',
+        age: '',
     };
 }
 

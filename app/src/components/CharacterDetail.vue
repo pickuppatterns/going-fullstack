@@ -2,7 +2,8 @@
     <section v-if="character">
         <h1>{{character.name}}</h1>
         <ul>
-            <li>DOB: {{character.dob}}</li>
+            <li>Fandom: {{character.fandom}}</li>
+            <li>Age: {{character.age}}</li>
             <li>Cool? {{character.cool}}</li>
         </ul>
     </section>

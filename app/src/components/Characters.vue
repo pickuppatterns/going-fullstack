@@ -43,10 +43,10 @@ export default {
 
 <style scoped>
 li {
-    list-style: none;
     padding: 5px;
 }
 ul {
+    list-style: none;
     display: flex;
     flex-direction: row;
     justify-content: space-around;
