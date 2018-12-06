@@ -1,8 +1,9 @@
 const express = require('express');
 const app = express();
-const shortid = require('shortid');
 const fs = require('fs');
 const morgan = require('morgan');
+const pg = require('pg');
+
 
 function readData() {
   const data = fs.readFileSync('./data/characters.json', 'utf8');
@@ -17,25 +18,24 @@ function saveData(characters) {
 app.use(morgan('dev'));
 app.use(express.json());
 
+const dbUrl = 'postgres://localhost:5432/characters';
+const Client = pg.Client;
+const client = new Client(dbUrl);
+client.connect();
+
 app.get('/api/characters', (req, res) => {
   const characters = readData();
-  if(req.query.name) {
-    const match = req.query.name.toLowerCase();
-
-    const filtered = characters.filter(c => {
-      return c.name.toLowerCase().startsWith(match);
+  client.query(`
+    SELECT name, dob FROM characters;`)
+    .then(result => {
+      res.json(result.rows);
     });
-    res.json(filtered);
-  }
-  else {
-    res.json(characters);
-  }
 });
 
 app.post('/api/characters', (req, res) => {
   const characters = readData();
   const character = req.body;
-  character.id = shortid.generate();
+  // character.id = shortid.generate();
   characters.push(req.body);
   saveData(characters);
   res.json(character);
