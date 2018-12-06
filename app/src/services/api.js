@@ -4,6 +4,10 @@ export default {
     return fetch('/api/albums')
       .then(response => response.json());
   },
+  getAlbum(id) {
+    return fetch(`/api/albums/${id}`)
+      .then(response => response.json());
+  },
 
   addAlbum(album) {
     return fetch('/api/albums', {
