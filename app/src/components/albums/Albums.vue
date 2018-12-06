@@ -3,18 +3,17 @@
     <h2>Albums</h2>
     
     <AddAlbum :onAdd="handleAdd"/>
+    <AlbumList :albums="albums"/>
 
-    <ul v-if="albums">
-      <li v-for="album in albums" :key="album.id">
-        {{album.name}}
-      </li>
-    </ul>
+    
   </section>
 </template>
 
 <script>
 import api from '../../services/api';
 import AddAlbum from './AddAlbum';
+import AlbumList from './AlbumList';
+
 export default {
   data() {
     return {
@@ -23,7 +22,8 @@ export default {
     };
   },
   components: {
-    AddAlbum
+    AddAlbum,
+    AlbumList
   },
   created() {
     api.getAlbums()
