@@ -19,6 +19,6 @@ export default {
     },
     getHouses() {
         return fetch('/api/houses')
-            .then(response => response.json);
+            .then(response => response.json());
     }
 };

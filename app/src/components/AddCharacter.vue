@@ -33,7 +33,7 @@ import api from '../services/api.js';
 function initCharacter() {
     return {
         name: '',
-        housesId: '',
+        housesId: '-1',
         alive: '',
         age: '',
     };
@@ -51,14 +51,16 @@ export default {
     },
     methods: {
         handleSubmit() {
-            this.onAdd(this.character).then(() => {
-                this.character = initCharacter();
-            });
+            this.onAdd(this.character)
+                .then(() => {
+                    this.character = initCharacter();
+                });
         }
     },
     created() {
         api.getHouses()
-            .then(houses => this.houses = houses);
+            .then(houses => {
+                this.houses = houses;});
     }
 };
 </script>
