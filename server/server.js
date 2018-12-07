@@ -1,16 +1,16 @@
 const express = require('express');
 const app = express();
 const morgan = require('morgan');
-const pg = require('pg');
+const client = require('./db-client');
 
 app.use(morgan('dev'));
 app.use(express.json());
 
-/* Connect to pg */
-const Client = pg.Client;
-const dbUrl = 'postgres://localhost:5432/albums';
-const client = new Client(dbUrl);
-client.connect();
+// /* Connect to pg */
+// const Client = pg.Client;
+// const dbUrl = 'postgres://localhost:5432/albums';
+// const client = new Client(dbUrl);
+// client.connect();
 /* end connect pg */
 
 console.log('i am the server file');
@@ -37,7 +37,7 @@ app.get('/api/albums/:id', (req, res) => {
 
 app.delete('/api/albums/:id', (req, res) => {
   client.query(`
-  DELETE FROM albums WHERE id = $1;
+  DELETE FROM album WHERE id = $1;
   `,
   [req.params.id])
     .then(result => {
@@ -61,7 +61,6 @@ app.post('/api/albums', (req, res) => {
 });
 
 const PORT = 3000;
-app.listen(PORT, () => 
-{
+app.listen(PORT, () => {
   console.log('running on', PORT);
 });
