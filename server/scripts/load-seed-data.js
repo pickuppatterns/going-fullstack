@@ -22,7 +22,7 @@ Promise.all(
                   $2 as alive,
                   $3 as age
                   FROM houses
-                  WHERE short_name = $4
+                  WHERE name = $4
             `,
         [character.name, character.alive, character.age, character.house]);
       })
