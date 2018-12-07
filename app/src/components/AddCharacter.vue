@@ -4,10 +4,10 @@
             <input v-model="character.name" required>
         </label>
         <label>
-            Fandom:
+            House:
             <input type="text" v-model="character.fandom" required>
         </label>
-        <label>Cool: 
+        <label>Alive: 
             <select v-model="character.cool">
                 <option value="true">Yes!</option>
                 <option value="false">No!</option>
@@ -24,8 +24,8 @@
 function initCharacter() {
     return {
         name: '',
-        fandom: '',
-        cool: '',
+        house: '',
+        alive: '',
         age: '',
     };
 }

@@ -1,19 +1,24 @@
 const express = require('express');
 const app = express();
 const morgan = require('morgan');
-const pg = require('pg');
+const client = require('./scripts/db-client');
 
 app.use(morgan('dev'));
 app.use(express.json());
 
-const dbUrl = 'postgres://localhost:5432/characters';
-const Client = pg.Client;
-const client = new Client(dbUrl);
-client.connect();
-
 app.get('/api/characters', (req, res) => {
   client.query(`
     SELECT name, id FROM characters;`)
+    .then(result => {
+      res.json(result.rows);
+    });
+});
+
+app.get('/api/houses', (req, res) => {
+  client.query(`
+    SELECT id, name, short_name as "shortName"
+    FROM house;
+  `)
     .then(result => {
       res.json(result.rows);
     });
@@ -32,10 +37,10 @@ app.get('/api/characters/:id', (req, res) => {
 app.post('/api/characters', (req, res) => {
   const body = req.body;
   client.query(`
-    INSERT INTO characters (name, fandom, cool, age)
+    INSERT INTO characters (name, house, alive, age)
     VALUES ($1, $2, $3, $4)
     RETURNING *;`, 
-  [body.name, body.fandom, body.cool, body.age])
+  [body.name, body.house, body.alive, body.age])
     .then(result => {
       res.json(result.rows[0]);
     });

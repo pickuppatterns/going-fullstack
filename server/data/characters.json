@@ -1,23 +1,37 @@
 [
   {
     "id": "hp",
-    "fandom": "Harry Potter",
     "name": "Harry Potter",
-    "cool": true,
+    "house": "Gryffindor",
+    "alive": true,
     "age": 38
   },
   {
     "id": "hg",
     "name": "Hermione Granger",
-    "fandom": "Harry Potter",
-    "cool": true,
+    "house": "Gryffindor",
+    "alive": true,
     "age": 38
   },
   {
     "id": "rw",
     "name": "Ron Weasley",
-    "fandom": "Harry Potter",
-    "cool": false,
+    "house": "Gryffindor",
+    "alive": true,
+    "age": 38
+  },
+  {
+    "id": "cd",
+    "name": "Cedric Diggory",
+    "house": "Hufflepuff",
+    "alive": false,
+    "age": 17
+  },
+  {
+    "id": "cc",
+    "name": "Cho Chang",
+    "house": "Ravenclaw",
+    "alive": true,
     "age": 38
   }
 ]
