@@ -1,34 +1,29 @@
 [
   {
-    "id": "hp",
     "name": "Harry Potter",
     "house": "Gryffindor",
     "alive": true,
     "age": 38
   },
   {
-    "id": "hg",
     "name": "Hermione Granger",
     "house": "Gryffindor",
     "alive": true,
     "age": 38
   },
   {
-    "id": "rw",
     "name": "Ron Weasley",
     "house": "Gryffindor",
     "alive": true,
     "age": 38
   },
   {
-    "id": "cd",
     "name": "Cedric Diggory",
     "house": "Hufflepuff",
     "alive": false,
     "age": 17
   },
   {
-    "id": "cc",
     "name": "Cho Chang",
     "house": "Ravenclaw",
     "alive": true,

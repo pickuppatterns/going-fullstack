@@ -17,7 +17,7 @@ app.get('/api/characters', (req, res) => {
 app.get('/api/houses', (req, res) => {
   client.query(`
     SELECT id, name, short_name as "shortName"
-    FROM house;
+    FROM houses;
   `)
     .then(result => {
       res.json(result.rows);
@@ -35,12 +35,17 @@ app.get('/api/characters/:id', (req, res) => {
 });
 
 app.post('/api/characters', (req, res) => {
-  const body = req.body;
   client.query(`
-    INSERT INTO characters (name, house, alive, age)
-    VALUES ($1, $2, $3, $4)
-    RETURNING *;`, 
-  [body.name, body.house, body.alive, body.age])
+    SELECT 
+      character.id,
+      character.name,
+      houses.id as "housesId",
+      houses.name as house,
+      character.alive,
+      character.age
+    FROM characters
+    JOIN houses 
+    ON character.houses_id = houses.id`) 
     .then(result => {
       res.json(result.rows[0]);
     });

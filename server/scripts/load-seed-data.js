@@ -15,10 +15,16 @@ Promise.all(
     return Promise.all(
       characters.map(character => {
         return client.query(`
-                INSERT INTO characters (name, house, alive, age)
-                VALUES ($1, $2, $3, $4);
+                INSERT INTO characters (name, houses_id, alive, age)
+                SELECT
+                  $1 as name,
+                  id as houses_id,
+                  $2 as alive,
+                  $3 as age
+                  FROM houses
+                  WHERE short_name = $4
             `,
-        [character.name, character.house, character.alive, character.age]);
+        [character.name, character.alive, character.age, character.house]);
       })
     );
   })

@@ -9,7 +9,7 @@ client.query(`
         CREATE TABLE IF NOT EXISTS characters (
             id SERIAL PRIMARY KEY,
             name VARCHAR(256) NOT NULL,
-            house VARCHAR(256) NOT NULL,
+            houses_id INTEGER NOT NULL REFERENCES houses(id),
             alive BOOLEAN,
             age INTEGER
         );

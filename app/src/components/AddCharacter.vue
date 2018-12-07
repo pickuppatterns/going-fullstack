@@ -5,7 +5,7 @@
         </label>
         <label>
             House:
-            <input type="text" v-model="character.fandom" required>
+            <input type="text" v-model="character.house" required>
         </label>
         <label>Alive: 
             <select v-model="character.cool">
