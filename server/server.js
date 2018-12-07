@@ -54,19 +54,29 @@ app.get('/api/characters/:id', (req, res) => {
 });
 
 app.post('/api/characters', (req, res) => {
+  const body = req.body; 
   client.query(`
-    SELECT 
-      character.id,
-      character.name,
-      houses.id as "housesId",
-      houses.name as house,
-      character.alive,
-      character.age
-    FROM characters
-    JOIN houses 
-    ON character.houses_id = houses.id`) 
+    INSERT INTO characters(name, houses_id, alive, age)
+    VALUES ($1, $2, $3, $4);
+  `,
+  [body.name, body.houseId, body.alive, body.age])
     .then(result => {
-      res.json(result.rows[0]);
+      const id = result.rows.id[0];
+      client.query(`
+        SELECT 
+          character.id,
+          character.name,
+          houses.id as "housesId",
+          houses.name as house,
+          character.alive,
+          character.age
+        FROM characters
+        JOIN houses 
+        ON character.houses_id = houses.id`
+      , [id]) 
+        .then(result => {
+          res.json(result.rows[0]);
+        });
     });
 });
 

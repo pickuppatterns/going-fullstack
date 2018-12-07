@@ -3,28 +3,37 @@
         <label>Name: 
             <input v-model="character.name" required>
         </label>
-        <label>
-            House:
-            <input type="text" v-model="character.house" required>
+        <label>House: 
+            <select v-if="houses"
+                v-model="character.housesId">
+                <option value="-1" disabled>Select a house!</option>
+                <option v-for="house in houses"
+                    :key="house.id" 
+                    :value="house.id" required>
+                    {{house.name}}    
+                </option>
+            </select>
         </label>
         <label>Alive: 
-            <select v-model="character.cool">
+            <select v-model="character.alive">
                 <option value="true">Yes!</option>
                 <option value="false">No!</option>
             </select>
         </label>
-       <label>Age:</label>
+       <label>Age:
             <input type="number" v-model="character.age" required>
+        </label>
         <button>Add</button>
     </form>
 </template>
 
 <script>
+import api from '../services/api.js';
 
 function initCharacter() {
     return {
         name: '',
-        house: '',
+        housesId: '',
         alive: '',
         age: '',
     };
@@ -36,7 +45,8 @@ export default {
     },
     data() {
         return {
-            character: initCharacter()
+            character: initCharacter(),
+            houses: null
         };
     },
     methods: {
@@ -45,6 +55,10 @@ export default {
                 this.character = initCharacter();
             });
         }
+    },
+    created() {
+        api.getHouses()
+            .then(houses => this.houses = houses);
     }
 };
 </script>

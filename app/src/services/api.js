@@ -16,5 +16,9 @@ export default {
             body: JSON.stringify(character)
         })
             .then(response => response.json());
+    },
+    getHouses() {
+        return fetch('/api/houses')
+            .then(response => response.json);
     }
 };
