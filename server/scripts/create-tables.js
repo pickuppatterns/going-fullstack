@@ -1,7 +1,7 @@
 const client = require('../db-client');
 
 client.query(`
-CREATE TABLE IF NOT EXISTS track (
+CREATE TABLE IF NOT EXISTS genre (
   id SERIAL PRIMARY KEY,
   name VARCHAR(256) NOT NULL,
   short_name VARCHAR(8) NOT NULL
@@ -9,9 +9,9 @@ CREATE TABLE IF NOT EXISTS track (
 CREATE TABLE IF NOT EXISTS album (
     id SERIAL PRIMARY KEY, 
     name VARCHAR(256) NOT NULL,
-    year INT,
+    year INTEGER,
     description VARCHAR(256),
-    rating INT
+    rating BOOLEAN
     );
   `)
   .then(

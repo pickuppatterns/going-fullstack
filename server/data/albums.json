@@ -1,99 +1,123 @@
 [
   {
-    "name": "Henry Von Baron II",
-    "album": 1985,
-    "id": "kfT5OEKjP"
+    "name": "Dark Side of the Moon",
+    "year": 1973,
+    "description": "kfT5OEKjP",
+    "rating": "Yes"
   },
   {
-    "name": "June Student",
-    "album": 1989,
-    "id": "-oQ0hXsFI"
+    "name": "Pauls Boutique",
+    "year": 1989,
+    "description": "-oQ0hXsFI",
+    "rating": "Yes"
   },
   {
-    "name": "Terry Ible Student",
-    "album": 1990,
-    "id": "fCzdTDLaO"
+    "name": "CrazySexyCool",
+    "year": 1993,
+    "description": "fCzdTDLaO",
+    "rating": "Yes"
   },
   {
-    "name": "Sweety Student",
-    "album": 1985,
-    "id": "z8krGPJ5p"
+    "name": "A Love Supreme",
+    "year": 1965,
+    "description": "z8krGPJ5p",
+    "rating": "Yes"
   },
   {
-    "name": "jilly bean",
-    "album": 1985,
-    "id": "sgfX9zzOy"
+    "name": "Bizzare Ride to the Pharcyde",
+    "year": 1992,
+    "description": "sgfX9zzOy",
+    "rating": "Yes"
   },
   {
-    "name": "joey jupper",
-    "album": 1985,
-    "id": "UvR1U9m6D"
+    "name": "To Pimp a Butterfly",
+    "year": 2015,
+    "description": "UvR1U9m6D",
+    "rating": "Yes"
   },
   {
-    "name": "beta student",
-    "album": 1985,
-    "id": "WtuD2EThl"
+    "name": "Repeater",
+    "year": 1990,
+    "description": "WtuD2EThl",
+    "rating": "Yes"
   },
   {
-    "name": "delta student",
-    "album": 1985,
-    "id": "ITzHaVHSk"
+    "name": "Melody of the Certain Damaged",
+    "year": 2000,
+    "description": "ITzHaVHSk",
+    "rating": "Yes"
   },
   {
-    "name": "bee student",
-    "album": 1985,
-    "id": "dFjurnUPN"
+    "name": "Sketches of Spain",
+    "year": 1959,
+    "description": "dFjurnUPN",
+    "rating": "Yes"
   },
   {
-    "name": "thetastudent",
-    "album": 1985,
-    "id": "qvWGkC_UF"
+    "name": "A Nickel and a Nail and Ace of Spades",
+    "year": 1968,
+    "description": "qvWGkC_UF",
+    "rating": "Yes"
+
   },
   {
-    "name": "test 5",
-    "album": 1985,
-    "id": "38vcsZ0q3"
+    "name": "Whitney",
+    "year": 1985,
+    "description": "38vcsZ0q3",
+    "rating": "Yes"
   },
   {
-    "name": "test 6",
-    "album": 1985,
-    "id": "xfiGVe-7X"
+    "name": "S.O.S.",
+    "year": 1980,
+    "description": "xfiGVe-7X",
+    "rating": "Yes"
   },
   {
-    "name": "bad student",
-    "album": 1985,
-    "id": "2JPwy_iv0"
+    "name": "Fever to Tell",
+    "year": 2003,
+    "description": "2JPwy_iv0",
+    "rating": "Yes"
   },
   {
-    "name": "bad student",
-    "album": 1985,
-    "id": "-p7Y_gp47"
+    "name": "Face Value",
+    "year": 1985,
+    "description": "-p7Y_gp47",
+    "rating": "No"
   },
   {
-    "name": "This is quite new",
-    "album": 2001
+    "name": "Invisibile Touch",
+    "year": 1986,
+    "description": "sYHYcokL_",
+    "rating": "No"
   },
   {
-    "name": "This is quite new",
-    "album": 2001,
-    "id": "S8MFZ1Mrm"
+    "name": "Abandoned Luncheonette",
+    "year": 1973,
+    "description": "S8MFZ1Mrm",
+    "rating": "Yes"
   },
   {
-    "name": "Testing the emergency broadcast system",
-    "album": 2001,
-    "id": "kNPnHE76J"
+    "name": "At Last",
+    "year": 1960,
+    "description": "kNPnHE76J",
+    "rating": "Yes"
   },
   {
-    "name": "This could work",
-    "album": 2230,
-    "id": "fLk0VGOKU"
+    "name": "Hunkpapa",
+    "year": 1989,
+    "description": "fLk0VGOKU",
+    "rating": "Yes"
   },
   {
-    "name": "commit this",
-    "id": "sYHYcokL_"
+    "name": "Speaking in Tonges",
+    "year": 1983,
+    "description": "sYHYcokL_",
+    "rating": "Yes"
   },
   {
-    "name": "vegtables",
-    "id": "APwxLfM-3"
+    "name": "Like a Virgin",
+    "year": 1984,
+    "description": "APwxLfM-3",
+    "rating": "Yes"
   }
 ]

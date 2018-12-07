@@ -1,6 +1,7 @@
 const express = require('express');
 const app = express();
 const morgan = require('morgan');
+// const albums = require('./lib/routes/albums');
 const client = require('./db-client');
 
 app.use(morgan('dev'));
@@ -14,17 +15,8 @@ app.use(express.json());
 /* end connect pg */
 
 console.log('i am the server file');
- 
-/* Defined routes: METHOD, URL PATH */
-app.get('/api/albums', (req, res) => {
-  client.query(`
-  SELECT id, name FROM album;
-`)
-    .then(result => {
-      res.json(result.rows);
-    });
 
-});
+// app.use('/api/albums', albums)
 app.get('/api/albums/:id', (req, res) => {
   client.query(`
     SELECT * FROM album WHERE id = $1;
@@ -44,6 +36,15 @@ app.delete('/api/albums/:id', (req, res) => {
       res.json({ removed:result.rowCount === 1 });
     });
 });
+app.get('/api/albums', (req, res) => {
+  client.query(`
+    SELECT id, name FROM album;
+  `)
+    .then(result => {
+      res.json(result.rows);
+    });
+  
+});
 
 
 app.post('/api/albums', (req, res) => {
@@ -59,6 +60,9 @@ app.post('/api/albums', (req, res) => {
       res.json(result.rows[0]);
     });
 });
+
+
+
 
 const PORT = 3000;
 app.listen(PORT, () => {
