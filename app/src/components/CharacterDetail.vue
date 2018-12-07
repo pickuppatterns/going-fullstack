@@ -2,9 +2,9 @@
     <section v-if="character">
         <h1>{{character.name}}</h1>
         <ul>
-            <li>house: {{character.house}}</li>
+            <li>House: {{character.house}}</li>
             <li>Age: {{character.age}}</li>
-            <li>Cool? {{character.cool}}</li>
+            <li>Alive? {{character.alive}}</li>
         </ul>
     </section>
 </template>

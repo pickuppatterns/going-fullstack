@@ -4,7 +4,6 @@ client.query(`
         CREATE TABLE IF NOT EXISTS houses (
           id SERIAL PRIMARY KEY,
           name VARCHAR(256) NOT NULL,
-          short_name VARCHAR(8) NOT NULL
         );
         CREATE TABLE IF NOT EXISTS characters (
             id SERIAL PRIMARY KEY,

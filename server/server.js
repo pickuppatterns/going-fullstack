@@ -8,7 +8,16 @@ app.use(express.json());
 
 app.get('/api/characters', (req, res) => {
   client.query(`
-    SELECT name, id FROM characters;`)
+    SELECT 
+      characters.id,
+      characters.name,
+      houses.id as "housesId",
+      houses.name as house,
+      characters.alive,
+      characters.age
+    FROM characters 
+    JOIN houses 
+    ON characters.houses_id = houses.id`)
     .then(result => {
       res.json(result.rows);
     });
@@ -16,7 +25,7 @@ app.get('/api/characters', (req, res) => {
 
 app.get('/api/houses', (req, res) => {
   client.query(`
-    SELECT id, name, short_name as "shortName"
+    SELECT id, name 
     FROM houses;
   `)
     .then(result => {
@@ -26,7 +35,17 @@ app.get('/api/houses', (req, res) => {
 
 app.get('/api/characters/:id', (req, res) => {
   client.query(`
-    SELECT * FROM characters WHERE id = $1;
+    SELECT 
+      characters.id,
+      characters.name,
+      houses.id as "housesId",
+      houses.name as house,
+      characters.alive,
+      characters.age
+    FROM characters 
+    JOIN houses 
+    ON characters.houses_id = houses.id
+    WHERE characters.id = $1
   `,
   [req.params.id])
     .then(result => {

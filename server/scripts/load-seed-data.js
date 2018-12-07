@@ -5,10 +5,10 @@ const houses = require('./houses.js');
 Promise.all(
   houses.map(house => {
     return client.query(`
-      INSERT INTO houses (name, short_name)
-      VALUES ($1, $2);
+      INSERT INTO houses (name)
+      VALUES ($1);
     `,
-    [house.name, house.shortName]);
+    [house.name]);
   })
 )
   .then(() => {
