@@ -17,6 +17,17 @@ app.use(express.json());
 console.log('i am the server file');
 
 // app.use('/api/albums', albums)
+app.get('/api/genre', (req, res) => {
+  client.query(`
+    SELECT id, name, short_name as "shortName";
+    from genre
+    ORDER BY name;
+  `)
+    .then(result => {
+      res.json(result.rows);
+    });
+  
+});
 app.get('/api/albums/:id', (req, res) => {
   client.query(`
     SELECT * FROM album WHERE id = $1;
@@ -24,16 +35,6 @@ app.get('/api/albums/:id', (req, res) => {
   [req.params.id])
     .then(result => {
       res.json(result.rows[0]);
-    });
-});
-
-app.delete('/api/albums/:id', (req, res) => {
-  client.query(`
-  DELETE FROM album WHERE id = $1;
-  `,
-  [req.params.id])
-    .then(result => {
-      res.json({ removed:result.rowCount === 1 });
     });
 });
 app.get('/api/albums', (req, res) => {
@@ -45,7 +46,6 @@ app.get('/api/albums', (req, res) => {
     });
   
 });
-
 
 app.post('/api/albums', (req, res) => {
   const body = req.body;
@@ -60,6 +60,20 @@ app.post('/api/albums', (req, res) => {
       res.json(result.rows[0]);
     });
 });
+
+app.delete('/api/albums/:id', (req, res) => {
+  client.query(`
+  DELETE FROM album WHERE id = $1;
+  `,
+  [req.params.id])
+    .then(result => {
+      res.json({ removed:result.rowCount === 1 });
+    });
+});
+
+
+
+
 
 
 
