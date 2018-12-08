@@ -16,17 +16,18 @@ Promise.all(
     return Promise.all (
       albums.map(album =>{
         return client.query(`
-      INSERT INTO album(name, year, description, genre_id, rating)
+      INSERT INTO album(name, url, year, description, genre_id, rating)
       SELECT
       $1 as name,
-      $2 as year,
-      $3 as description,
+      $2 as url,
+      $3 as year,
+      $4 as description,
       id as genre_id,
-      $4 as rating
+      $5 as rating
       FROM genre
-      WHERE short_name = $5;
+      WHERE short_name = $6;
       `,
-        [album.name, album.year, album.description, album.rating, album.genre]);
+        [album.name, album.url, album.year, album.description, album.rating, album.genre]);
       }) 
     );
   })

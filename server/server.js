@@ -33,6 +33,7 @@ app.get('/api/albums', (req, res) => {
     SELECT 
       album.id, 
       album.name as name,
+      album.url,
       album.year,
       album.description,
       album.rating,
@@ -53,6 +54,7 @@ app.get('/api/albums/:id', (req, res) => {
     SELECT 
       album.id, 
       album.name as name,
+      album.url,
       album.year,
       album.description,
       album.rating,
@@ -72,11 +74,11 @@ app.post('/api/albums', (req, res) => {
   const body = req.body;
 
   client.query(`
-    INSERT INTO album (name, year, description, rating)
-    VALUES($1, $2, $3, $4)
-    RETURNING id, name, year, description, rating;
+    INSERT INTO album (name, url, year, description, rating)
+    VALUES($1, $2, $3, $4, $5)
+    RETURNING id, name, url, year, description, rating;
   `,
-  [body.name, body.year, body.genreId, body.description, body.rating])
+  [body.name, body.url, body.year, body.genreId, body.description, body.rating])
     .then(result => {
       const id = result.rows[0].id;
 
@@ -84,6 +86,7 @@ app.post('/api/albums', (req, res) => {
         SELECT
               album.id,
               album.name as name,
+              album.url,
               album.year,
               album.description,
               album.rating,

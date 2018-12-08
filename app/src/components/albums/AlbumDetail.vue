@@ -1,6 +1,9 @@
 <template>
     <section v-if="album">
         <h2>{{album.name}}</h2>
+        <p class="album-art">
+            <img :src="album.url">
+        </p>
         <p>
             {{album.year}}
         </p>
@@ -45,5 +48,7 @@ export default {
 </script>
 
 <style>
-
+.album-art img {
+  width:300px;
+}
 </style>
