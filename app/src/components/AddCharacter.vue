@@ -60,7 +60,6 @@ export default {
     created() {
         api.getHouses()
             .then(houses => {
-                console.log(houses);
                 this.houses = houses;});
     }
 };

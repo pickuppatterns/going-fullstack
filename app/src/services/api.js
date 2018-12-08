@@ -20,5 +20,12 @@ export default {
     getHouses() {
         return fetch('/api/houses')
             .then(response => response.json());
+    },
+    deleteCharacter(id) {
+        console.log(id);
+        return fetch(`/api/characters/${id}`, {
+            method: 'DELETE'
+        })
+            .then(response => response.json());
     }
 };

@@ -83,6 +83,14 @@ app.post('/api/characters', (req, res) => {
     });
 });
 
+app.delete('/api/characters/:id', (req, res) => {
+  client.query(`
+    DELETE from characters WHERE id = $1;
+  `, [req.params.id]).then(result => {
+    res.json({ removed: result.rowCount === 1 });
+  });
+});
+
 // this should go at the bottom //
 const PORT = 3000;
 

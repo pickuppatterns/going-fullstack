@@ -6,6 +6,7 @@
             <li>Age: {{character.age}}</li>
             <li>Alive? {{character.alive}}</li>
         </ul>
+        <button @click="handleDelete">Delete</button>
     </section>
 </template>
 
@@ -16,6 +17,13 @@ export default {
         return {
             character: null
         };
+    },
+    methods: {
+        handleDelete() {
+            api.deleteCharacter(this.character.id)
+                .then(() =>
+                    this.$router.push('/characters'));
+        }
     },
     created() {
         api.getCharacter(this.$route.params.id)
