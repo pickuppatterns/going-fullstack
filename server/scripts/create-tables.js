@@ -11,6 +11,7 @@ CREATE TABLE IF NOT EXISTS album (
     name VARCHAR(256) NOT NULL,
     year INTEGER,
     description VARCHAR(256),
+    genre_id INTEGER NOT NULL REFERENCES genre(id),
     rating BOOLEAN
     );
   `)

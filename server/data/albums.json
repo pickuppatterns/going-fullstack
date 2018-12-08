@@ -3,60 +3,70 @@
     "name": "Dark Side of the Moon",
     "year": 1973,
     "description": "kfT5OEKjP",
+    "genre": "country",
     "rating": "Yes"
   },
   {
     "name": "Pauls Boutique",
     "year": 1989,
     "description": "-oQ0hXsFI",
+    "genre": "western",
     "rating": "Yes"
   },
   {
     "name": "CrazySexyCool",
     "year": 1993,
     "description": "fCzdTDLaO",
+    "genre": "country",
     "rating": "Yes"
   },
   {
     "name": "A Love Supreme",
     "year": 1965,
     "description": "z8krGPJ5p",
+    "genre": "western",
     "rating": "Yes"
   },
   {
     "name": "Bizzare Ride to the Pharcyde",
     "year": 1992,
     "description": "sgfX9zzOy",
+    "genre": "country",
     "rating": "Yes"
   },
   {
     "name": "To Pimp a Butterfly",
     "year": 2015,
     "description": "UvR1U9m6D",
+    "genre": "country",
     "rating": "Yes"
   },
   {
     "name": "Repeater",
     "year": 1990,
     "description": "WtuD2EThl",
+    "genre": "western",
     "rating": "Yes"
   },
   {
     "name": "Melody of the Certain Damaged",
     "year": 2000,
     "description": "ITzHaVHSk",
+    "genre": "country",
     "rating": "Yes"
   },
   {
     "name": "Sketches of Spain",
     "year": 1959,
     "description": "dFjurnUPN",
+    "genre": "western",
     "rating": "Yes"
   },
   {
     "name": "A Nickel and a Nail and Ace of Spades",
     "year": 1968,
     "description": "qvWGkC_UF",
+    "genre": "country",
     "rating": "Yes"
 
   },
@@ -64,60 +74,70 @@
     "name": "Whitney",
     "year": 1985,
     "description": "38vcsZ0q3",
+    "genre": "western",
     "rating": "Yes"
   },
   {
     "name": "S.O.S.",
     "year": 1980,
     "description": "xfiGVe-7X",
+    "genre": "country",
     "rating": "Yes"
   },
   {
     "name": "Fever to Tell",
     "year": 2003,
     "description": "2JPwy_iv0",
+    "genre": "western",
     "rating": "Yes"
   },
   {
     "name": "Face Value",
     "year": 1985,
     "description": "-p7Y_gp47",
+    "genre": "country",
     "rating": "No"
   },
   {
     "name": "Invisibile Touch",
     "year": 1986,
     "description": "sYHYcokL_",
+    "genre": "western",
     "rating": "No"
   },
   {
     "name": "Abandoned Luncheonette",
     "year": 1973,
     "description": "S8MFZ1Mrm",
+    "genre": "country",
     "rating": "Yes"
   },
   {
     "name": "At Last",
     "year": 1960,
     "description": "kNPnHE76J",
+    "genre": "country",
     "rating": "Yes"
   },
   {
     "name": "Hunkpapa",
     "year": 1989,
     "description": "fLk0VGOKU",
+    "genre": "western",
     "rating": "Yes"
   },
   {
     "name": "Speaking in Tonges",
     "year": 1983,
     "description": "sYHYcokL_",
+    "genre": "country",
     "rating": "Yes"
   },
   {
     "name": "Like a Virgin",
     "year": 1984,
     "description": "APwxLfM-3",
+    "genre": "western",
     "rating": "Yes"
   }
 ]
