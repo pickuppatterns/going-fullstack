@@ -6,11 +6,11 @@
         <label>House: 
             <select v-if="houses"
                 v-model="character.housesId">
-                <option value="-1" disabled>Select a house!</option>
+                <option value="" disabled>Select a house!</option>
                 <option v-for="house in houses"
                     :key="house.id" 
                     :value="house.id" required>
-                    {{house.name}}    
+                    {{house.name}} {{house.id}}    
                 </option>
             </select>
         </label>
@@ -33,7 +33,7 @@ import api from '../services/api.js';
 function initCharacter() {
     return {
         name: '',
-        housesId: '-1',
+        housesId: '',
         alive: '',
         age: '',
     };
@@ -60,6 +60,7 @@ export default {
     created() {
         api.getHouses()
             .then(houses => {
+                console.log(houses);
                 this.houses = houses;});
     }
 };
