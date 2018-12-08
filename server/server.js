@@ -16,7 +16,7 @@ app.use(express.json());
 
 console.log('i am the server file');
 
-app.get('api/genre', (req, res) => {
+app.get('/api/genre', (req, res) => {
   client.query(`
   SELECT id, name, short_name as "shortName"
   FROM genre
@@ -50,7 +50,17 @@ app.get('/api/albums', (req, res) => {
 
 app.get('/api/albums/:id', (req, res) => {
   client.query(`
-    SELECT * FROM album WHERE id = $1;
+    SELECT 
+      album.id, 
+      album.name as name,
+      album.year,
+      album.description,
+      album.rating,
+      genre.name as genre
+    FROM album 
+    JOIN genre
+    ON album.genre_id = genre.id
+    WHERE album.id = $1;
   `,
   [req.params.id])
     .then(result => {

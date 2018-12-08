@@ -8,7 +8,6 @@ export default {
     return fetch(`/api/albums/${id}`)
       .then(response => response.json());
   },
-
   addAlbum(album) {
     return fetch('/api/albums', {
       method: 'POST',

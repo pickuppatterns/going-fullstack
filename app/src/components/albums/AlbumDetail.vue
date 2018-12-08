@@ -6,7 +6,10 @@
         </p>
         <p>
             {{album.description}}
-        </p> 
+        </p>
+        <p>
+            {{album.genre}}
+        </p>    
         <p>
             {{album.rating}}
         </p>   
