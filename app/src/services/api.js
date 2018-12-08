@@ -22,7 +22,6 @@ export default {
             .then(response => response.json());
     },
     deleteCharacter(id) {
-        console.log(id);
         return fetch(`/api/characters/${id}`, {
             method: 'DELETE'
         })
