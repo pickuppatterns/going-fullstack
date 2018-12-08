@@ -16,11 +16,30 @@ app.use(express.json());
 
 console.log('i am the server file');
 
-// app.use('/api/albums', albums)
-app.get('/api/genre', (req, res) => {
+app.get('api/genre', (req, res) => {
   client.query(`
-    SELECT id, name, short_name as "shortName";
-    from genre
+  SELECT id, name, short_name as "shortName"
+  FROM genre
+  ORDER BY name;
+  `)
+    .then(result => {
+      res.json(result.rows);
+    });
+});
+
+// app.use('/api/albums', albums)
+app.get('/api/albums', (req, res) => {
+  client.query(`
+    SELECT 
+      album.id, 
+      album.name as name,
+      album.year,
+      album.description,
+      album.rating,
+      genre.name as genre
+    FROM album 
+    JOIN genre
+    ON album.genre_id = genre.id
     ORDER BY name;
   `)
     .then(result => {
@@ -28,6 +47,7 @@ app.get('/api/genre', (req, res) => {
     });
   
 });
+
 app.get('/api/albums/:id', (req, res) => {
   client.query(`
     SELECT * FROM album WHERE id = $1;
@@ -36,15 +56,6 @@ app.get('/api/albums/:id', (req, res) => {
     .then(result => {
       res.json(result.rows[0]);
     });
-});
-app.get('/api/albums', (req, res) => {
-  client.query(`
-    SELECT id, name FROM album;
-  `)
-    .then(result => {
-      res.json(result.rows);
-    });
-  
 });
 
 app.post('/api/albums', (req, res) => {
@@ -55,11 +66,33 @@ app.post('/api/albums', (req, res) => {
     VALUES($1, $2, $3, $4)
     RETURNING id, name, year, description, rating;
   `,
-  [body.name, body.year, body.description, body.rating])
+  [body.name, body.year, body.genreId, body.description, body.rating])
+    .then(result => {
+      const id = result.rows[0].id;
+
+      return client.query(`
+        SELECT
+              album.id,
+              album.name as name,
+              album.year,
+              album.description,
+              album.rating,
+              genre.id as "genreId",
+              genre.name as name
+        FROM album
+        JOIN genre
+        ON album.genre_id = genre.id
+        WHERE album.id = $1;
+        `,
+      [id]);
+    })
     .then(result => {
       res.json(result.rows[0]);
     });
 });
+
+
+
 
 app.delete('/api/albums/:id', (req, res) => {
   client.query(`
