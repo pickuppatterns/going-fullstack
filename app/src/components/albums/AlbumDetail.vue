@@ -14,7 +14,7 @@
             {{album.genre}}
         </p>    
         <p>
-            {{album.rating}}
+            <StarRating :rating="album.rating"/>
         </p>   
         <button @click="handleDelete">DELETE</button>
     </section>
@@ -22,6 +22,7 @@
 
 <script>
 import api from '../../services/api';
+import StarRating from 'vue-star-rating';
 
 export default {
   data() {
@@ -32,9 +33,14 @@ export default {
   created() {
     api.getAlbum(this.$route.params.id)
       .then(album => {
+        console.log(typeof album.rating);
+        album.rating = parseInt(album.rating); 
         this.album = album;
       });
   }, 
+  components:{
+    StarRating
+  },
   methods: {
     handleDelete() {
       // console.log('I am the stitch that will remove:' this.album);
