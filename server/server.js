@@ -74,8 +74,8 @@ app.post('/api/albums', (req, res) => {
   const body = req.body;
 
   client.query(`
-    INSERT INTO album (name, url, year, description, rating)
-    VALUES($1, $2, $3, $4, $5)
+    INSERT INTO album (name, url, year, genre_id, description, rating)
+    VALUES($1, $2, $3, $4, $5, $6)
     RETURNING id, name, url, year, description, rating;
   `,
   [body.name, body.url, body.year, body.genreId, body.description, body.rating])
@@ -91,7 +91,7 @@ app.post('/api/albums', (req, res) => {
               album.description,
               album.rating,
               genre.id as "genreId",
-              genre.name as name
+              genre.name as genre
         FROM album
         JOIN genre
         ON album.genre_id = genre.id
