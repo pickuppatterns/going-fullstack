@@ -1,7 +1,7 @@
 <template>
     <section>
         <h1>Characters</h1>
-        <AddCharacter :onAdd="handleAdd" />
+        <AddCharacter :onSubmit="handleAdd" />
         <ul v-if="characters">
             <li v-for="character in characters" 
             :key="character.id">
@@ -49,4 +49,9 @@ ul {
     grid-row-gap: 60px;
     list-style: none;
 	}
+li :hover {
+    background: rgba(170, 170, 170, 0.452);
+    padding: 5px;
+    font-size: 1.05em;
+}
 </style>
