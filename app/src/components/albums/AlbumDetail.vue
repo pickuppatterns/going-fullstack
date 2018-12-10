@@ -16,13 +16,16 @@
         </p>
         <p>
             {{album.genre}}
-        </p>    
+        </p> 
+        <p>
+          {{album.description}}
+        </p>   
         <p>
             <StarRating :rating="album.rating"/>
         </p> 
       </div>
       <div class="album-description">
-            {{album.description}}
+            
       </div>  
     </section>
 </template>

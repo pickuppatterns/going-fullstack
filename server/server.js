@@ -48,9 +48,8 @@ app.get('/api/albums', (req, res) => {
     });
   
 });
-
-app.get('/api/albums/:id', (req, res) => {
-  client.query(`
+function getAlbum(id){
+  return client.query(`
     SELECT 
       album.id, 
       album.name as name,
@@ -58,13 +57,17 @@ app.get('/api/albums/:id', (req, res) => {
       album.year,
       album.description,
       album.rating,
+      genre.id as "genreId",
       genre.name as genre
     FROM album 
     JOIN genre
     ON album.genre_id = genre.id
     WHERE album.id = $1;
   `,
-  [req.params.id])
+  [id]);
+}
+app.get('/api/albums/:id', (req, res) => {
+  getAlbum(req.params.id)
     .then(result => {
       res.json(result.rows[0]);
     });
@@ -76,28 +79,13 @@ app.post('/api/albums', (req, res) => {
   client.query(`
     INSERT INTO album (name, url, year, genre_id, description, rating)
     VALUES($1, $2, $3, $4, $5, $6)
-    RETURNING id, name, url, year, description, rating;
+    RETURNING id;
   `,
   [body.name, body.url, body.year, body.genreId, body.description, body.rating])
     .then(result => {
       const id = result.rows[0].id;
 
-      return client.query(`
-        SELECT
-              album.id,
-              album.name as name,
-              album.url,
-              album.year,
-              album.description,
-              album.rating,
-              genre.id as "genreId",
-              genre.name as genre
-        FROM album
-        JOIN genre
-        ON album.genre_id = genre.id
-        WHERE album.id = $1;
-        `,
-      [id]);
+      return getAlbum(id);
     })
     .then(result => {
       res.json(result.rows[0]);
@@ -115,17 +103,15 @@ app.put('/api/albums/:id', (req, res) => {
       genre_id = $4,
       description = $5,
       rating = $6
-    WHERE id = $4
-    RETURNING
-     id,
-     name,
-     url, 
-     year, 
-     album.genre_id as "genreID",
-     description, 
-     rating;
+    WHERE id = $7
+    RETURNING id;
   `,
-  [body.name, body.url, body.year, body.genreId, body.description, body.rating])
+  [body.name, body.url, body.year, body.genreId, body.description, body.rating, body.id])
+    .then(result => {
+      const id = result.rows[0].id;
+
+      return getAlbum(id);
+    })
     .then(result => {
       res.json(result.rows[0]);
     });
