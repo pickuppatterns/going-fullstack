@@ -103,9 +103,33 @@ app.post('/api/albums', (req, res) => {
       res.json(result.rows[0]);
     });
 });
+app.put('/api/albums/:id', (req, res) => {
+  const body = req.body;
 
-
-
+  client.query(`
+    UPDATE album
+    SET 
+      name = $1,
+      url = $2,
+      year = $3,
+      genre_id = $4,
+      description = $5,
+      rating = $6
+    WHERE id = $4
+    RETURNING
+     id,
+     name,
+     url, 
+     year, 
+     album.genre_id as "genreID",
+     description, 
+     rating;
+  `,
+  [body.name, body.url, body.year, body.genreId, body.description, body.rating])
+    .then(result => {
+      res.json(result.rows[0]);
+    });
+});
 
 app.delete('/api/albums/:id', (req, res) => {
   client.query(`
@@ -116,14 +140,6 @@ app.delete('/api/albums/:id', (req, res) => {
       res.json({ removed:result.rowCount === 1 });
     });
 });
-
-
-
-
-
-
-
-
 const PORT = 3000;
 app.listen(PORT, () => {
   console.log('running on', PORT);

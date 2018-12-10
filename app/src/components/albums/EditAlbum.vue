@@ -1,8 +1,11 @@
 <template>
   <section>
-    <button @click="show = true">ADD A NEW ALBUM</button>
+    <button @click="show = true">EDIT ✎</button>
     <Modal v-if="show" :onClose="() => show = false">
-      <AlbumForm :onSubmit="handleAdd"/>
+      <AlbumForm 
+       :onSubmit="handleEdit"
+       :albumToEdit="album"
+       label="Update"/>
     </Modal>
   </section> 
 </template>
@@ -13,7 +16,8 @@ import Modal from '../shared/Modal';
 
 export default {
   props: {
-    onAdd: Function
+    onEdit: Function,
+    album: Object
   }, 
   data() {
     return {
@@ -25,8 +29,8 @@ export default {
     Modal
   },
   methods: {
-    handleAdd(album) {
-      return this.onAdd(album)
+    handleEdit(album) {
+      return this.onEdit(album)
         .then(() => this.show = false);
     }
   }

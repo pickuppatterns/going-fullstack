@@ -1,5 +1,5 @@
 <template>
-  <form @submit.prevent="handleSubmit">
+  <form @submit.prevent="onSubmit(album)">
     <input v-focus v-model="album.name" placeholder="Name" required>
     <input v-model="album.url" placeholder="URL" required>
     <input v-model.number="album.year" type="number" placeholder="Year" min="1925" required>
@@ -9,11 +9,10 @@
     </select>
     <input v-model="album.description" placeholder="Description" required>
     <StarRating v-model="album.rating"/>
-    <button>{{label || 'Add'}}</button>
+    <button>{{label || 'ADD'}}</button>
   </form>
 </template>
 <script>
-import api from '../../services/api';
 import StarRating from 'vue-star-rating';
 function initAlbum() {
   return {
@@ -27,29 +26,21 @@ function initAlbum() {
 }
 export default {
   props: {
-    onEdit: Function,
-    label: String
+    onSubmit: Function,
+    label: String,
+    albumToEdit: Object
 
   },
   data() {
     return {
-      album: initAlbum(),
-      genre: null
+      album: this.albumToEdit
+        ? Object.assign ({}, this.albumToEdit) 
+        : initAlbum(),
+      genres: null
     };
   },
   components:{
     StarRating
-  },
-  created() {
-    api.getGenres()
-      .then(genres => {
-        this.genres = genres;
-      });
-  },
-  methods: {
-    handleSubmit() {
-      this.onEdit(this.album);  
-    }
   }
 };
 </script>
@@ -65,6 +56,10 @@ input {
    margin: 5px 0 10px 0;
    font-size: 15px;
    text-align: left;
+   font-family: 'Avenir', Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+   margin-top: 60px;
   }
   input:focus {
   background-color: #f7ffe0;

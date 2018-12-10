@@ -1,3 +1,14 @@
+// let genres = null;
+
+const getOptions = (method, data) => {
+  return {
+    method,
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(data)
+  };
+};
 export default {
 
   getAlbums() {
@@ -16,6 +27,13 @@ export default {
       },
       body: JSON.stringify(album)
     })
+      .then(response => response.json());
+  },
+  updateAlbum(album) {
+    return fetch(
+      `/api/albums/${album.id}`, 
+      getOptions('PUT', album)
+    )
       .then(response => response.json());
   },
   deleteAlbum(id) {
